@@ -9,9 +9,12 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.LongStream;
 
+import org.springframework.stereotype.Service;
+
 /**
  * Implements the pricing service to get prices for each vehicle.
  */
+@Service
 public class PricingService {
 
     /**
