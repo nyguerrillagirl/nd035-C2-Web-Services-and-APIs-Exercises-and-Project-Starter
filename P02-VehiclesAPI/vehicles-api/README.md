@@ -26,6 +26,8 @@ view of vehicle details including price and address.
 To properly run this application you need to start the Orders API and
 the Service API first.
 
+For windows environment all the required servers can be started by using
+the script runall.bat
 
 ```
 $ mvn clean package
@@ -74,7 +76,7 @@ Swagger UI: http://localhost:8080/swagger-ui.html
 `GET` `/cars/{id}`
 
 This feature retrieves the Vehicle data from the database
-and access the Pricing Service and Boogle Maps to enrich 
+and access the Pricing Service and Boogle Maps to enrich
 the Vehicle information to be presented
 
 ### Update a Vehicle
