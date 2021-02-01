@@ -29,3 +29,5 @@ Improvements Made:
 
 In order to support the ability to "remember" the (lat,lon) with an Address
 during a test.  The (lat,lon) values sent are saved in a MultiKeyMap.
+
+Added this service to Eureka Server (boogle-maps-service)
