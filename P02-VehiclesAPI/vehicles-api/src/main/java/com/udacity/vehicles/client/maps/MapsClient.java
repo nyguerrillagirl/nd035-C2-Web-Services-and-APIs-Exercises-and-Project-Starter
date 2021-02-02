@@ -14,7 +14,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 @Component
 public class MapsClient {
 
-    private static final Logger log = LoggerFactory.getLogger(MapsClient.class);
+    private static final Logger logger = LoggerFactory.getLogger(MapsClient.class);
 
     private final WebClient client;
     private final ModelMapper mapper;
@@ -32,6 +32,7 @@ public class MapsClient {
      *   or an exception message noting the Maps service is down
      */
     public Location getAddress(Location location) {
+    	logger.info("invoked boogle-maps for location: " + location.toString());
         try {
             Address address = client
                     .get()
@@ -47,7 +48,7 @@ public class MapsClient {
 
             return location;
         } catch (Exception e) {
-            log.warn("Map service is down");
+            logger.warn("Map service is down");
             return location;
         }
     }

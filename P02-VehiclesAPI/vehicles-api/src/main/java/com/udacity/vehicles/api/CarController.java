@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.Resources;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +32,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/cars")
 class CarController {
+    private static final Logger logger = LoggerFactory.getLogger(CarController.class);
 
     private final CarService carService;
     private final CarResourceAssembler assembler;
@@ -80,7 +83,7 @@ class CarController {
          * TODO: Use the `assembler` on that saved car and return as part of the response.
          *   Update the first line as part of the above implementing.
          */
-    	System.out.println("===> postCar invoked");
+    	logger.debug("===> postCar invoked");
     	Car savedCar = carService.save(car);
         Resource<Car> resource = assembler.toResource(savedCar);
         return ResponseEntity.created(new URI(resource.getId().expand().getHref())).body(resource);
