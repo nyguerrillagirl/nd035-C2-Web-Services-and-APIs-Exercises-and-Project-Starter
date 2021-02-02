@@ -38,7 +38,7 @@ public class PriceClient {
                     		// Change to Rest Data type request
                     		.path("prices/" + String.valueOf(vehicleId))
                             //.path("services/price/")
-                            .queryParam("vehicleId", vehicleId)
+                            //.queryParam("vehicleId", vehicleId)
                             .build()
                     )
                     .retrieve().bodyToMono(Price.class).block();
