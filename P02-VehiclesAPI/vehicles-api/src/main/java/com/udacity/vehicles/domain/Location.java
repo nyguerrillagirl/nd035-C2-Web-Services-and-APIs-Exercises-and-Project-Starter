@@ -39,6 +39,17 @@ public class Location {
         this.lon = lon;
     }
 
+    public String toString() {
+    	StringBuilder sb = new StringBuilder();
+    	sb.append("lat: " + lat);
+    	sb.append(";lon: " + lon);
+    	sb.append(";address: " + address);
+    	sb.append(";city " + city);
+    	sb.append(";state: " + state);
+    	sb.append(";zip: " + zip);
+   	
+    	return sb.toString();
+    }
     public Double getLat() {
         return lat;
     }

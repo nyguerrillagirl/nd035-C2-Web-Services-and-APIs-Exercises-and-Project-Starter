@@ -35,7 +35,9 @@ public class PriceClient {
             Price price = client
                     .get()
                     .uri(uriBuilder -> uriBuilder
-                            .path("services/price/")
+                    		// Change to Rest Data type request
+                    		.path("prices/" + String.valueOf(vehicleId))
+                            //.path("services/price/")
                             .queryParam("vehicleId", vehicleId)
                             .build()
                     )
