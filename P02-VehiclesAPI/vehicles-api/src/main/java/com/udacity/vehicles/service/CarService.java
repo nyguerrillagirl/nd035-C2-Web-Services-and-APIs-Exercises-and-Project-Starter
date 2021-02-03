@@ -104,13 +104,14 @@ public class CarService {
 	public Car save(Car car) {
 		logger.debug("===> CarService.save invoked.");
 		if (car.getId() != null) {
+			logger.debug("===> CarService.save found car with id: " + car.getId());
 			return repository.findById(car.getId()).map(carToBeUpdated -> {
 				carToBeUpdated.setDetails(car.getDetails());
 				carToBeUpdated.setLocation(car.getLocation());
 				return repository.save(carToBeUpdated);
 			}).orElseThrow(CarNotFoundException::new);
 		}
-
+		logger.debug("===> CarService.save - new car entered into db");
 		return repository.save(car);
 	}
 
@@ -120,14 +121,21 @@ public class CarService {
 	 * @param id the ID number of the car to delete
 	 */
 	public void delete(Long id) {
+		logger.debug("===> CarService.delete - invoked");
 		/**
-		 * TODO: Find the car by ID from the `repository` if it exists. If it does not
+		 * DONE: Find the car by ID from the `repository` if it exists. If it does not
 		 * exist, throw a CarNotFoundException
 		 */
-
+		Optional<Car> optionalCar = repository.findById(id);
+		if (optionalCar.isEmpty()) {
+			throw new CarNotFoundException("Car is not found.");
+		}
+		Car car = optionalCar.get();
+		
 		/**
-		 * TODO: Delete the car from the repository.
+		 * DONE: Delete the car from the repository.
 		 */
+		repository.delete(car);
 
 	}
 }
