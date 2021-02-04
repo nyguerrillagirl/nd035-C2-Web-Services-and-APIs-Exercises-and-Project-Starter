@@ -6,6 +6,10 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
 import com.udacity.vehicles.domain.car.Car;
 import com.udacity.vehicles.service.CarService;
+
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -31,7 +35,10 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/cars")
-class CarController {
+@ApiResponses(value = {
+        @ApiResponse(code=400, message = "This is a bad request, please follow the API documentation for the proper request format."),
+        @ApiResponse(code=500, message = "The server is down. Please make sure that the Location microservice is running.")
+})class CarController {
     private static final Logger logger = LoggerFactory.getLogger(CarController.class);
 
     private final CarService carService;

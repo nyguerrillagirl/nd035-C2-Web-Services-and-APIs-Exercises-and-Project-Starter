@@ -23,16 +23,17 @@ public class CarService {
 
 	private final CarRepository repository;
 
-	@Autowired
-	private PriceClient priceClient;
-
-	@Autowired
-	private MapsClient mapsClient;
 
 	public CarService(CarRepository repository) {
 		/**
-		 * TODO: Add the Maps and Pricing Web Clients you create in
+		 * DONE: Add the Maps and Pricing Web Clients you create in
 		 * `VehiclesApiApplication` as arguments and set them here.
+		 * 
+		 * Note: I took a Pluralsight JPA course and learned about 
+		 * 		adding my own EntityListeners for transient data like
+		 * 		pricing and location. I used that route. See 
+		 * 		CarLocationAndPriceListener.java for how I handled
+		 * 		if and when to invoke Boogle-Maps and PricingService
 		 */
 		this.repository = repository;
 	}
