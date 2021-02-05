@@ -2,6 +2,7 @@ package com.udacity.vehicles.service;
 
 import com.udacity.vehicles.client.maps.MapsClient;
 import com.udacity.vehicles.client.prices.PriceClient;
+import com.udacity.vehicles.domain.Condition;
 import com.udacity.vehicles.domain.Location;
 import com.udacity.vehicles.domain.car.Car;
 import com.udacity.vehicles.domain.car.CarRepository;
@@ -109,6 +110,8 @@ public class CarService {
 			return repository.findById(car.getId()).map(carToBeUpdated -> {
 				carToBeUpdated.setDetails(car.getDetails());
 				carToBeUpdated.setLocation(car.getLocation());
+				logger.debug("===> Updating condition");
+				carToBeUpdated.setCondition(car.getCondition());
 				return repository.save(carToBeUpdated);
 			}).orElseThrow(CarNotFoundException::new);
 		}
